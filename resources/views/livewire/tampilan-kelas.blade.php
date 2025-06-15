@@ -24,33 +24,84 @@
 
             @forelse ($kelasList as $kelas)
                 <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                    <h3 class="text-xl font-bold border-b pb-2 mb-4 text-gray-900 dark:text-gray-100">
+                    <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                         Kelas: {{ $kelas->nama_kelas }}
                     </h3>
 
-                    <h4 class="text-md font-bold text-gray-900 dark:text-gray-100">
-                        Daftar Guru ({{ $kelas->guru->count() }} orang)
-                    </h4>
-                    <ul class="list-disc list-inside mt-2 space-y-1">
-                        @forelse($kelas->guru as $guru)
-                            <li class="text-gray-700 dark:text-gray-200">{{ $guru->nama }} (NIP: {{ $guru->nip }})
-                            </li>
-                        @empty
-                            <li class="text-gray-500 dark:text-gray-400">Belum ada guru di kelas ini.</li>
-                        @endforelse
-                    </ul>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                            <thead class="bg-gray-50 dark:bg-gray-700">
+                                <tr>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider w-1/12">
+                                        #</th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                        Nama</th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                        ID (NIP/NIS)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr>
+                                    <td colspan="3" class="px-6 py-2 bg-gray-100 dark:bg-gray-700">
+                                        <h4 class="text-sm font-semibold text-gray-800 dark:text-gray-200">
+                                            Daftar Guru ({{ $kelas->guru->count() }} orang)
+                                        </h4>
+                                    </td>
+                                </tr>
 
-                    <h4 class="text-md font-bold text-gray-900 dark:text-gray-100 mt-4">
-                        Daftar Siswa ({{ $kelas->siswa->count() }} orang)
-                    </h4>
-                    <ul class="list-disc list-inside mt-2 space-y-1">
-                        @forelse($kelas->siswa as $siswa)
-                            <li class="text-gray-700 dark:text-gray-200">{{ $siswa->nama }} (NIS: {{ $siswa->nis }})
-                            </li>
-                        @empty
-                            <li class="text-gray-500 dark:text-gray-400">Belum ada siswa di kelas ini.</li>
-                        @endforelse
-                    </ul>
+                                @forelse($kelas->guru as $index => $guru)
+                                    <tr>
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
+                                            {{ $index + 1 }}</td>
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
+                                            {{ $guru->nama }}</td>
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
+                                            {{ $guru->nip }}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="3"
+                                            class="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400">Belum
+                                            ada guru di kelas ini.</td>
+                                    </tr>
+                                @endforelse
+
+                                <tr>
+                                    <td colspan="3" class="px-6 py-2 bg-gray-100 dark:bg-gray-700">
+                                        <h4 class="text-sm font-semibold text-gray-800 dark:text-gray-200">
+                                            Daftar Siswa ({{ $kelas->siswa->count() }} orang)
+                                        </h4>
+                                    </td>
+                                </tr>
+
+                                @forelse($kelas->siswa as $index => $siswa)
+                                    <tr>
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
+                                            {{ $index + 1 }}</td>
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
+                                            {{ $siswa->nama }}</td>
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
+                                            {{ $siswa->nis }}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="3"
+                                            class="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400">Belum
+                                            ada siswa di kelas ini.</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             @empty
                 <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">

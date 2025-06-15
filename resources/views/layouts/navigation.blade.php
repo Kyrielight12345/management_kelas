@@ -23,6 +23,15 @@
                     <x-nav-link :href="route('list.siswa')" :active="request()->routeIs('list.siswa')">
                         {{ __('Siswa') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('tampilan.list.siswa')" :active="request()->routeIs('list.kelas')">
+                        {{ __('List Siswa') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('tampilan.list.guru')" :active="request()->routeIs('list.guru')">
+                        {{ __('List Guru') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('tampilan.list.all')" :active="request()->routeIs('list.siswa')">
+                        {{ __('List siswa, kelas dan guru') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('tampilan.per.kelas')" :active="request()->routeIs('tampilan.per.kelas')">
                         {{ __('Tampilan per Kelas') }}
                     </x-nav-link>
@@ -94,6 +103,15 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('list.siswa')" :active="request()->routeIs('list.siswa')">
                 {{ __('Siswa') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('tampilan.list.siswa')" :active="request()->routeIs('tampilan.list.siswa')">
+                {{ __('List Siswa') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('tampilan.list.guru')" :active="request()->routeIs('tampilan.list.guru')">
+                {{ __('List Guru') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('tampilan.list.all')" :active="request()->routeIs('ampilan.list.all')">
+                {{ __('List Siswa, kelas dan Guru') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('tampilan.per.kelas')" :active="request()->routeIs('tampilan.per.kelas')">
                 {{ __('Tampilan per Kelas') }}
