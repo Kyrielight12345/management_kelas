@@ -8,6 +8,7 @@ use App\Livewire\GuruList;
 use App\Livewire\Listall;
 use App\Livewire\Listguru;
 use App\Livewire\Listsiswa;
+use App\Livewire\Ortu;
 use App\Livewire\SiswaList;
 use App\Livewire\RekapList;
 
@@ -31,5 +32,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/siswa-per-kelas', Listsiswa::class)->name('tampilan.list.siswa');
     Route::get('/guru-per-kelas', Listguru::class)->name('tampilan.list.guru');
     Route::get('/tampilan-all-kelas', Listall::class)->name('tampilan.list.all');
+    Route::get('/tampilan-orangtua', Ortu::class)->name('tampilan.ortu');
 });
 require __DIR__ . '/auth.php';

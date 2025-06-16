@@ -35,6 +35,9 @@
                     <x-nav-link :href="route('tampilan.per.kelas')" :active="request()->routeIs('tampilan.per.kelas')">
                         {{ __('Tampilan per Kelas') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('tampilan.ortu')" :active="request()->routeIs('tampilan.per.kelas')">
+                        {{ __('Tampilan Orang Tua') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -116,7 +119,9 @@
             <x-responsive-nav-link :href="route('tampilan.per.kelas')" :active="request()->routeIs('tampilan.per.kelas')">
                 {{ __('Tampilan per Kelas') }}
             </x-responsive-nav-link>
-
+            <x-responsive-nav-link :href="route('tampilan.ortu')" :active="request()->routeIs('ampilan.list.all')">
+                {{ __('List Orang Tua') }}
+            </x-responsive-nav-link>
         </div>
 
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">

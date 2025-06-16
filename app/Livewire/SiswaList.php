@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Siswa;
 use App\Models\Kelas;
+use App\Models\orangtua;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\Attributes\Layout;
@@ -26,10 +27,13 @@ class SiswaList extends Component
     public string $originalKelasNama = '';
 
     public $kelasList = [];
+    public $semuaOrtu = [];
+
 
     public function mount()
     {
         $this->kelasList = Kelas::orderBy('nama_kelas')->get();
+        $this->semuaOrtu = orangtua::orderBy('nama')->get();
     }
 
     protected function rules(): array
@@ -44,9 +48,14 @@ class SiswaList extends Component
     public function render()
     {
         $siswaList = Siswa::with('kelas')->latest()->paginate(5);
+        $ortuList = OrangTua::with('siswa')->latest()->paginate(5);
+
+
 
         return view('livewire.siswa-list', [
-            'siswaList' => $siswaList
+            'siswaList' => $siswaList,
+            'ortuList' => $ortuList,
+
         ]);
     }
 
